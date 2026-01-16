@@ -1,0 +1,601 @@
+{
+	"compiler": {
+		"version": "0.8.31+commit.fd3a2265"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "CCIPLocalSimulator__MsgSenderIsNotTokenOwner",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					}
+				],
+				"name": "CCIPLocalSimulator__RequiredRoleNotFound",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "configuration",
+				"outputs": [
+					{
+						"internalType": "uint64",
+						"name": "chainSelector_",
+						"type": "uint64"
+					},
+					{
+						"internalType": "contract IRouterClient",
+						"name": "sourceRouter_",
+						"type": "address"
+					},
+					{
+						"internalType": "contract IRouterClient",
+						"name": "destinationRouter_",
+						"type": "address"
+					},
+					{
+						"internalType": "contract WETH9",
+						"name": "wrappedNative_",
+						"type": "address"
+					},
+					{
+						"internalType": "contract LinkToken",
+						"name": "linkToken_",
+						"type": "address"
+					},
+					{
+						"internalType": "contract BurnMintERC677Helper",
+						"name": "ccipBnM_",
+						"type": "address"
+					},
+					{
+						"internalType": "contract BurnMintERC677Helper",
+						"name": "ccipLnM_",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint64",
+						"name": "chainSelector",
+						"type": "uint64"
+					}
+				],
+				"name": "getSupportedTokens",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "tokens",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint64",
+						"name": "chainSelector",
+						"type": "uint64"
+					}
+				],
+				"name": "isChainSupported",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "supported",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "requestLinkFromFaucet",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "success",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenAddress",
+						"type": "address"
+					}
+				],
+				"name": "supportNewTokenViaAccessControlDefaultAdmin",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenAddress",
+						"type": "address"
+					}
+				],
+				"name": "supportNewTokenViaGetCCIPAdmin",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenAddress",
+						"type": "address"
+					}
+				],
+				"name": "supportNewTokenViaOwner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"configuration()": {
+					"returns": {
+						"ccipBnM_": "- The ccipBnM token.",
+						"ccipLnM_": "- The ccipLnM token.",
+						"chainSelector_": "- The unique CCIP Chain Selector.",
+						"destinationRouter_": "- The destination chain Router contract.",
+						"linkToken_": "- The LINK token.",
+						"sourceRouter_": " - The source chain Router contract.",
+						"wrappedNative_": "- The wrapped native token which can be used for CCIP fees."
+					}
+				},
+				"getSupportedTokens(uint64)": {
+					"params": {
+						"chainSelector": "- The unique CCIP Chain Selector."
+					},
+					"returns": {
+						"tokens": "- Returns a list of token addresses that are supported for cross-chain transfers by the simulator."
+					}
+				},
+				"isChainSupported(uint64)": {
+					"params": {
+						"chainSelector": "- The unique CCIP Chain Selector."
+					},
+					"returns": {
+						"supported": "- Returns true if `chainSelector` is supported by the simulator."
+					}
+				},
+				"requestLinkFromFaucet(address,uint256)": {
+					"params": {
+						"amount": "- The amount of LINK tokens to send.",
+						"to": "- The address to which LINK tokens are to be sent."
+					},
+					"returns": {
+						"success": "- Returns `true` if the transfer of tokens was successful, otherwise `false`."
+					}
+				},
+				"supportNewTokenViaAccessControlDefaultAdmin(address)": {
+					"params": {
+						"tokenAddress": "- The address of the token to add to the list of supported tokens."
+					}
+				},
+				"supportNewTokenViaGetCCIPAdmin(address)": {
+					"params": {
+						"tokenAddress": "- The address of the token to add to the list of supported tokens."
+					}
+				},
+				"supportNewTokenViaOwner(address)": {
+					"params": {
+						"tokenAddress": "- The address of the token to add to the list of supported tokens."
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"configuration()": {
+					"notice": "Returns configuration details for pre-deployed contracts and services needed for local CCIP simulations."
+				},
+				"getSupportedTokens(uint64)": {
+					"notice": "Gets a list of token addresses that are supported for cross-chain transfers by the simulator."
+				},
+				"isChainSupported(uint64)": {
+					"notice": "Checks whether the provided `chainSelector` is supported by the simulator."
+				},
+				"requestLinkFromFaucet(address,uint256)": {
+					"notice": "Requests LINK tokens from the faucet. The provided amount of tokens are transferred to provided destination address."
+				},
+				"supportNewTokenViaAccessControlDefaultAdmin(address)": {
+					"notice": "Allows user to support any new token, besides CCIP BnM and CCIP LnM, for cross-chain transfers.         The caller must have the DEFAULT_ADMIN_ROLE as defined by the contract itself.         Reverts if the caller is not the admin of the token using OZ's AccessControl DEFAULT_ADMIN_ROLE."
+				},
+				"supportNewTokenViaGetCCIPAdmin(address)": {
+					"notice": "Allows user to support any new token, besides CCIP BnM and CCIP LnM, for cross-chain transfers.         Reverts if token does not implement getCCIPAdmin() function.         Reverts if the caller is not the token CCIPAdmin."
+				},
+				"supportNewTokenViaOwner(address)": {
+					"notice": "Allows user to support any new token, besides CCIP BnM and CCIP LnM, for cross-chain transfers.         Reverts if token does not implement owner() function.         Reverts if the caller is not the token owner."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/CCIP/CCIP chainlink local/CCIPLocalSimulator.sol": "CCIPLocal"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@chainlink/contracts-ccip/contracts/interfaces/IAny2EVMMessageReceiver.sol": {
+			"keccak256": "0x8f67554db88baee2d8facee3320fb85fd566f843b9e4bdb6870eafe1637d7919",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4fb75a68a7a53c0d2d444f996b60b77f329c6e25e96d695f6b6219eb92baebc5",
+				"dweb:/ipfs/QmWCaGFSHSx17TgDou3EX2yuofPQnmkiuGX3isUmfHe3mb"
+			]
+		},
+		"@chainlink/contracts-ccip/contracts/interfaces/IGetCCIPAdmin.sol": {
+			"keccak256": "0x915794040125fbb75110b20e60c3e6b584d92f57d40b77266bc37d31dae3bd29",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a29c372536049088ee5c0c0618e532826f2e027adf07fe6a656c08c7b057f152",
+				"dweb:/ipfs/QmYaGB6PFdysgkvJR8gB6LVNQzfoF3pT5J5KMViTYLxMiN"
+			]
+		},
+		"@chainlink/contracts-ccip/contracts/interfaces/IOwner.sol": {
+			"keccak256": "0x53acc313bc9fd39590c1a0a770bd311c85d803741d361319393c6bcfff5ed2a6",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5dc6555e640a7db6118a248b04a29408b044df5762580d39ddc7b96631ec097d",
+				"dweb:/ipfs/QmPGinQtdFghDtaVnjMVnHy1K17LEy4cNuRarxQLhdtKv8"
+			]
+		},
+		"@chainlink/contracts-ccip/contracts/interfaces/IRouter.sol": {
+			"keccak256": "0x2a41416a48effb61ea6ae5d7e8060a3272f0b9c81ce43030d7086c4013c01103",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://63c7ad609ceb01dd1a30bfabfaf90a11503484fb511c033454527ade7784fb83",
+				"dweb:/ipfs/QmTFJAb2QTP4bx5r4iXmVvKhuwb9Bp5ncwQ7AW5dYaiaHm"
+			]
+		},
+		"@chainlink/contracts-ccip/contracts/interfaces/IRouterClient.sol": {
+			"keccak256": "0x21280104a988eb7022f8968b1672bafba80a74e59f5512415009dff9a37be46a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1bbcde3e9cd0c60f540ec0f2bbd70724cd6c9650428a1fade8c0589ef163d6ca",
+				"dweb:/ipfs/QmajfuurMHa1SKWVVXsydeKuPCGzXkKtRUi2HW5EA7p6gr"
+			]
+		},
+		"@chainlink/contracts-ccip/contracts/libraries/Client.sol": {
+			"keccak256": "0xe358b1c7da94e7c601ad4d3f19f50892393f59152b46838057cbc68b21fe9bc8",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://070bdf838421d0c7cad76ecb420d36e175bfa909577a8b9f4761cc5578eaba7e",
+				"dweb:/ipfs/QmXrYbsmRkkLe85ttb4Cwjfoz82LUbez55ecZyJPqnwy17"
+			]
+		},
+		"@chainlink/contracts-ccip/contracts/libraries/Internal.sol": {
+			"keccak256": "0x592a02531502656331d9913295c1cc5af82b369c0451335fcf6c8e0bddf87689",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ae04c2342041d1e597950d0c939a0f7c7756e4afb20353b480093ecc3a98540c",
+				"dweb:/ipfs/Qmaj6Wp8BuUdLrRcjXBLHfJLq67M5oy6hWzK5TWKYTQRiT"
+			]
+		},
+		"@chainlink/contracts-ccip/contracts/libraries/MerkleMultiProof.sol": {
+			"keccak256": "0x8f4f8bf360b41ccc76dfbe68a2b410df168f9e05b1635d987e2bd09040ec2890",
+			"license": "BUSL-1.1",
+			"urls": [
+				"bzz-raw://4c6b9f9fb2490baaae7f3478b5a8b3673fe44b1c8f2a7f23fa2458644115b4fa",
+				"dweb:/ipfs/QmcCX97YjrqN1adT6xNabwC8KiVyDe8y1ceNJpqpbHW79a"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/shared/access/ConfirmedOwner.sol": {
+			"keccak256": "0xf73016e2473f54ab8d5c7e3c4ab2fa280a185ccfc80d2be48ac5d18016c3f717",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f051e82857cc14b3a975f8c09eece2ca349d4954e83165a2b56ed659aad40c9e",
+				"dweb:/ipfs/QmRNMQ5jQQ3a9LZgsQqmQxYJxhTQKQrRtP4Wc7TAjYS43N"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/shared/access/ConfirmedOwnerWithProposal.sol": {
+			"keccak256": "0x521cf41e477e502d133e050a5f35625f2ec652327af7f1b21abf5b898f9b8df9",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://65198b68ed110b9900174be8b3ef682da28f7645fbaa21e4ccd97e8b4a971501",
+				"dweb:/ipfs/QmfDu99JhbBFnAFdw95jjnGgXEohyRvA7XPQf4NEpheytc"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/shared/access/OwnerIsCreator.sol": {
+			"keccak256": "0x895af02d6a3df2930bbb6ec1f2d68118b492ca6e710ba0c34fcb6b574a0906aa",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c4c69fab5eea1c0448f856a51d7e5736454fe5cc083d36c60bf3ee23bb3d0e8e",
+				"dweb:/ipfs/QmP4fYQ9k7xeZms6cwnqnQuuAkRkeE2TWewyvCD8Mrc2DZ"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/shared/call/CallWithExactGas.sol": {
+			"keccak256": "0x3ea5dbd6b7e7959a43d8395fe7189ae68fcfaac390c1a4b729214ca87565c02c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://09e1e9341422d64d463b9dcbaad8e08547a35a18cdb1a2458130cecd17b01521",
+				"dweb:/ipfs/QmeTFLcFXhkfrmrBbsParDQRFXabFJZYSsNkVkkf1ms8bs"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/shared/interfaces/IERC677Receiver.sol": {
+			"keccak256": "0x5f9ee31598e2250815033c2f4e1e7e747f917815378938505063df1d4ae603ec",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://15aaf96a97cdeded001c705795bfd5c12bce211ed73cc6593a02dc8214c72124",
+				"dweb:/ipfs/Qmab5F6iSFyKGUpR1H2pqotNeE2FHEqbLPSr3zQ3xtNjtg"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/shared/interfaces/IOwnable.sol": {
+			"keccak256": "0x19f12817caa863b6785cf1e9085c66a93042fe906e41926bcb4a12bec9558d60",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d1cf3f784c42642747c263cfa7b9462846d5ce8ff84467470ec2703a659b925d",
+				"dweb:/ipfs/Qmbz2qYFMNM3CVYNKgwJV5Kqx5FFHSrb8zXEsYbJXyjFnP"
+			]
+		},
+		"@chainlink/local/src/ccip/BurnMintERC677Helper.sol": {
+			"keccak256": "0x5352ab24701b0e9f8d29a79c96c8c8cbd6b59c3b6bc5173435f37a3b817def2e",
+			"license": "BUSL-1.1",
+			"urls": [
+				"bzz-raw://d0815ce9d479ac732aeed388a8c73129d61c148c4faad726f9104cb269b1e6bd",
+				"dweb:/ipfs/QmdQGUK7NKYnXd6SW7FDVk8awhrah187XZqvz1hUEP43QG"
+			]
+		},
+		"@chainlink/local/src/ccip/CCIPLocalSimulator.sol": {
+			"keccak256": "0xed4088d353c02d09a652e80e5bd1f342b65748dfcd584306faefd84332dfc9dd",
+			"license": "BUSL-1.1",
+			"urls": [
+				"bzz-raw://2b6934c2e029d049d388c0824c0a4ea891792e80b0f834568e5a2d4124f1c96b",
+				"dweb:/ipfs/QmbiThXHaFWy81gaq7je3Zscbtz4yXw7uoNH2K69kjAY4v"
+			]
+		},
+		"@chainlink/local/src/shared/LinkToken.sol": {
+			"keccak256": "0xde87b42258d5df0740b426df6a0e8f8554ec2bb13a773b6262b9184244331410",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://2995c7409a4b57496baf1b0dc603ad6a457b5df3a0d18fc2ec6e0c89d3efac44",
+				"dweb:/ipfs/QmZP6zGnYNaXpxd9kYLx1vJ9KiyqmSj2exwWQ2fi7os5Ri"
+			]
+		},
+		"@chainlink/local/src/shared/WETH9.sol": {
+			"keccak256": "0x2e89f0db0ffccc384b9863f69050cb9405ba874e49de5ee7dd86e0a5b56e4829",
+			"urls": [
+				"bzz-raw://e375a070aa34a87199d2c063e5b8becb1ee68216a4bf92f09ef20ec2abf0ca9b",
+				"dweb:/ipfs/QmVPNeo3kbyi2azdDJPK22APgtJYRWBh2K9HxMDca7G4t7"
+			]
+		},
+		"@chainlink/local/src/vendor/chainlink-ccip/test/mocks/MockRouter.sol": {
+			"keccak256": "0xb7e49f367b6ca4f8dd8dff84d3765fa919b28b26146b5b7b177b0d880a428388",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3e511f808ba370679c90c81f873ee6f095dcb7f222a97a982f9481ebcc8f8915",
+				"dweb:/ipfs/QmUQFkQGnau318rZiPffQjZVKXEWnsxxWhxh2SvnRTB3iu"
+			]
+		},
+		"@chainlink/local/src/vendor/chainlink/shared/token/ERC20/IBurnMintERC20.sol": {
+			"keccak256": "0x63952c512943090792a13e7ba4804f0e57081f4b0fc774f117e1a340ced68e6c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4341ac25f2f345ccb4a978d7022d62c8838ef2dd668c27f412a5bfb3704f9fc8",
+				"dweb:/ipfs/QmRVzRAmvpageJndwEQbaTdZyw71zFZzKtFjAMHpHPan2Y"
+			]
+		},
+		"@chainlink/local/src/vendor/chainlink/shared/token/ERC677/BurnMintERC677.sol": {
+			"keccak256": "0x080c89223f58d3c2ba8896c95fce8496a177a085f867b19325d35db6433a511d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8f56c1eabc8814696fcf59c2cbfb5c195a1dc2be0a4fb18d048cc343df278ce7",
+				"dweb:/ipfs/QmYQSWfeMbmEiFEqpW3NpxKJwHzsDnrepfsEwhS7G1buAk"
+			]
+		},
+		"@chainlink/local/src/vendor/chainlink/shared/token/ERC677/ERC677.sol": {
+			"keccak256": "0x2b8da1fa2e471b80c28c227341d7783f309bd6faecc584850ddcc9414a59b9e2",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://2c379e3416492ad35a3a411b9b499934dc1d0bdb8d14af09311dc970c1ee8344",
+				"dweb:/ipfs/QmaTA6UoH3r6MPJ6YTaTAiaybtVM18cLT1JHJ8HPjmibqP"
+			]
+		},
+		"@chainlink/local/src/vendor/chainlink/shared/token/ERC677/IERC677.sol": {
+			"keccak256": "0x771321adbdab6bec7d27bcd8a46dfea813f1c97d97a7a671fe35cd87744daee4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://547d666afd4ef831cad69ba1627d12fcaadab1eab9456771e53f9e88749bd54e",
+				"dweb:/ipfs/QmY37ZFyBCKcwVNBgyryrcvmVcJKsfCGpzxF65hAWSNqgH"
+			]
+		},
+		"@chainlink/local/src/vendor/openzeppelin-solidity/v4.8.3/contracts/token/ERC20/ERC20.sol": {
+			"keccak256": "0x7c5aa7c5cfee675a4b27422af8b89c93e2067d18bbb00c4b0cd5b8c0f0a463af",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f708fc47a2d7ea6f54c047e3a9343ea6d157086e360a036f1e4088730ed4b8d2",
+				"dweb:/ipfs/QmStt2nNKmq1khMGTu8R5fSjpPa2TQaqgkmTFsfC59Hxsm"
+			]
+		},
+		"@chainlink/local/src/vendor/openzeppelin-solidity/v4.8.3/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0x00c839ff53d07d19db2e7cfa1e5133f9ee90a8d64b0e2e57f50446a2d1a3a0e0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3dac621d015a68a5251b1e5d41dda0faf252699bf6e8bcf46a958b29964d9dd1",
+				"dweb:/ipfs/QmP9axjgZv4cezAhALoTemM62sdLtMDJ9MGTxECnNwHgSJ"
+			]
+		},
+		"@chainlink/local/src/vendor/openzeppelin-solidity/v4.8.3/contracts/token/ERC20/extensions/ERC20Burnable.sol": {
+			"keccak256": "0x0d19410453cda55960a818e02bd7c18952a5c8fe7a3036e81f0d599f34487a7b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4c0f62d3d5bef22b5ca00cc3903e7de6152cb68d2d22401a463f373cda54c00f",
+				"dweb:/ipfs/QmSfzjZux7LC7NW2f7rjCXTHeFMUCWERqDkhpCTBy7kxTe"
+			]
+		},
+		"@chainlink/local/src/vendor/openzeppelin-solidity/v4.8.3/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
+			"keccak256": "0x8de418a5503946cabe331f35fe242d3201a73f67f77aaeb7110acb1f30423aca",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5a376d3dda2cb70536c0a45c208b29b34ac560c4cb4f513a42079f96ba47d2dd",
+				"dweb:/ipfs/QmZQg6gn1sUpM8wHzwNvSnihumUCAhxD119MpXeKp8B9s8"
+			]
+		},
+		"@chainlink/local/src/vendor/openzeppelin-solidity/v4.8.3/contracts/token/ERC20/extensions/draft-IERC20Permit.sol": {
+			"keccak256": "0x5fc40a61a22b8946e0ce31706ead391db6630b86dac67d240b8c2c15332d55e4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://08683782a30b65820507e570d3c3dbe6b28f227ece38faceba4006f0a5cdcd89",
+				"dweb:/ipfs/QmWdZwfH5PqSa3g8xUFvKj9awcYGiX2hpGLy9zmrrRibzq"
+			]
+		},
+		"@chainlink/local/src/vendor/openzeppelin-solidity/v4.8.3/contracts/token/ERC20/utils/SafeERC20.sol": {
+			"keccak256": "0xc0e5ad8872cdd1fe17584e3e73a460339bc2393186b38aca72e5a1b06a7011c3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d04b900a1b7c6878fd09d375af4b4b1f5cf638ca085be2336a6efaa04bc4fd6b",
+				"dweb:/ipfs/QmRxno3BASygUZ6YXJbqnVSbssTGcD2vfzFfm8Spxx1fRu"
+			]
+		},
+		"@chainlink/local/src/vendor/openzeppelin-solidity/v4.8.3/contracts/utils/Address.sol": {
+			"keccak256": "0x67dd0c86b2cf52e6e7613faaa738776686b62a163838260ac78a14a4c292f501",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c98f9b578c2e6d11d5fbd32b5987c516ec9bf44b7209b7425b04305c148e65b6",
+				"dweb:/ipfs/QmYVpd7C4nLfxXWDPDyu2AQavf7V9zhovxzKhM7TFXL1dT"
+			]
+		},
+		"@chainlink/local/src/vendor/openzeppelin-solidity/v4.8.3/contracts/utils/Context.sol": {
+			"keccak256": "0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6df0ddf21ce9f58271bdfaa85cde98b200ef242a05a3f85c2bc10a8294800a92",
+				"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3"
+			]
+		},
+		"@chainlink/local/src/vendor/openzeppelin-solidity/v4.8.3/contracts/utils/introspection/IERC165.sol": {
+			"keccak256": "0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f",
+				"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy"
+			]
+		},
+		"@chainlink/local/src/vendor/openzeppelin-solidity/v4.8.3/contracts/utils/structs/EnumerableSet.sol": {
+			"keccak256": "0xc3ff3f5c4584e1d9a483ad7ced51ab64523201f4e3d3c65293e4ca8aeb77a961",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d7d3dd6067a994690471b5fc71b6f81fac3847798b37d404f74db00b4d3c3d0e",
+				"dweb:/ipfs/QmRHF1RarifjNi93RttouNPkYZGyu6CD926PgRDzD5iL35"
+			]
+		},
+		"@chainlink/local/src/vendor/openzeppelin-solidity/v5.0.2/contracts/access/AccessControl.sol": {
+			"keccak256": "0xa0e92d42942f4f57c5be50568dac11e9d00c93efcb458026e18d2d9b9b2e7308",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://46326c0bb1e296b67185e81c918e0b40501b8b6386165855df0a3f3c634b6a80",
+				"dweb:/ipfs/QmTwyrDYtsxsk6pymJTK94PnEpzsmkpUxFuzEiakDopy4Z"
+			]
+		},
+		"@chainlink/local/src/vendor/openzeppelin-solidity/v5.0.2/contracts/access/IAccessControl.sol": {
+			"keccak256": "0xb6b36edd6a2999fd243ff226d6cbf84bd71af2432bbd0dfe19392996a1d9cb41",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1fd2f35495652e57e3f99bc6c510bc5f7dd398a176ea2e72d8ed730aebc6ca26",
+				"dweb:/ipfs/QmTQV6X4gkikTib49cho5iDX3JvSQbdsoEChoDwrk3CbbH"
+			]
+		},
+		"@chainlink/local/src/vendor/openzeppelin-solidity/v5.0.2/contracts/utils/Context.sol": {
+			"keccak256": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6a708e8a5bdb1011c2c381c9a5cfd8a9a956d7d0a9dc1bd8bcdaf52f76ef2f12",
+				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
+			]
+		},
+		"@chainlink/local/src/vendor/openzeppelin-solidity/v5.0.2/contracts/utils/introspection/ERC165.sol": {
+			"keccak256": "0x9e8778b14317ba9e256c30a76fd6c32b960af621987f56069e1e819c77c6a133",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1777404f1dcd0fac188e55a288724ec3c67b45288e49cc64723e95e702b49ab8",
+				"dweb:/ipfs/QmZFdC626GButBApwDUvvTnUzdinevC3B24d7yyh57XkiA"
+			]
+		},
+		"@chainlink/local/src/vendor/openzeppelin-solidity/v5.0.2/contracts/utils/introspection/ERC165Checker.sol": {
+			"keccak256": "0xecedf2332aa4a6273c4cd2578b8f042f8363f6f657dc75e055ca64f27fd71963",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1d866ad413856a629f57ca5c4b15a30eef88f7766be8c99defcbc712117cbbbd",
+				"dweb:/ipfs/QmYcE2ibmhTQH5F7mnJ8gUhvA1F43hYRRErTbpugmN591V"
+			]
+		},
+		"@chainlink/local/src/vendor/openzeppelin-solidity/v5.0.2/contracts/utils/introspection/IERC165.sol": {
+			"keccak256": "0x4296879f55019b23e135000eb36896057e7101fb7fb859c5ef690cf14643757b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://87b3541437c8c443ccd36795e56a338ed12855eec17f8da624511b8d1a7e14df",
+				"dweb:/ipfs/QmeJQCtZrQjtJLr6u7ZHWeH3pBnjtLWzvRrKViAi7UZqxL"
+			]
+		},
+		"contracts/CCIP/CCIP chainlink local/CCIPLocalSimulator.sol": {
+			"keccak256": "0x66b83d5d42be1c46a0ab9b154d8fc66d4a4ef9345b32d2dc10a58aa27b9ede83",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://cf53af374ff194bcabe8805a4eeda36f28eb6e2fee66f47de6a5ab88060f83bf",
+				"dweb:/ipfs/Qmb9wVmnR8vhUDiDvvK6jUVVSVKkjDVcH7H1KUXoMLX5bb"
+			]
+		}
+	},
+	"version": 1
+}
